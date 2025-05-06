@@ -11,11 +11,9 @@ import axios from "axios";
 
 const GuidePage = () => {
   return (
-    <>
-      <CopilotKit url="http://127.0.0.1:8000/guide">
-        <GuidePageExtend />
-      </CopilotKit>
-    </>
+    <CopilotKit url="http://127.0.0.1:8000/guide">
+      <GuidePageExtend />
+    </CopilotKit>
   );
 };
 
@@ -38,21 +36,30 @@ const GuidePageExtend = () => {
 
           let guideData = [];
 
-          // Attempt to parse JSON
           try {
-            if (typeof response.data.revision === "string") {
-              guideData = JSON.parse(response.data.revision);
-            } else if (Array.isArray(response.data.revision)) {
-              guideData = response.data.revision;
+            const revision = response.data.revision;
+
+            if (typeof revision === "string") {
+              try {
+                // Try parsing as JSON
+                guideData = JSON.parse(revision);
+              } catch {
+                // If it's not JSON, treat it as a string with * bullets
+                guideData = revision
+                  .split("\n")
+                  .map((line) => line.replace(/^\* ?/, "").trim())
+                  .filter((line) => line);
+              }
+            } else if (Array.isArray(revision)) {
+              guideData = revision;
             }
+
+            setGuides(guideData);
+            setError(null);
           } catch (jsonError) {
             console.error("Failed to parse revision data:", jsonError);
             setError("Error parsing guide data. Please try again.");
-            return;
           }
-
-          setGuides(guideData);
-          setError(null);
         } else {
           console.error("Fetch failed", response.data.message);
           setError(response.data.message || "Failed to fetch guides.");
@@ -99,14 +106,12 @@ const GuidePageExtend = () => {
             </p>
           </div>
 
-          {/* Error Message */}
           {error && (
             <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded">
               {error}
             </div>
           )}
 
-          {/* Points */}
           <div className="rounded-lg">
             {guides.length > 0 ? (
               <ol className="space-y-6">
@@ -128,7 +133,6 @@ const GuidePageExtend = () => {
             )}
           </div>
 
-          {/* Buttons */}
           <div className="flex flex-col md:flex-row gap-6 justify-center mt-12">
             <Link to="/mcq">
               <button className="bg-gradient-to-r from-blue-700 to-blue-500 text-white font-bold px-6 py-3 rounded-lg flex items-center justify-center gap-2 transition-transform transform hover:scale-105 hover:shadow-lg">

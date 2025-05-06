@@ -1,10 +1,11 @@
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
 import requests
 import os
 from dotenv import load_dotenv
+
 # Initialize FastAPI app
 app = FastAPI()
 
@@ -17,6 +18,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Load .env.local file
+load_dotenv(dotenv_path=".env.local")
+
 # In-memory storage for revision data
 class RevisionStore:
     def __init__(self):
@@ -28,15 +32,13 @@ class RevisionStore:
     def get_revision(self) -> Optional[str]:
         return self.revision_data
 
-
 revision_store = RevisionStore()
 
 # Request model for /guide endpoint
 class GuideRequest(BaseModel):
     subject: str
     qualification: str
-    additional_context: Optional[str] = None  # Updated to match frontend JSON field
-
+    additional_context: Optional[str] = None
 
 @app.post("/guide")
 async def generate_guide(request: GuideRequest):
@@ -54,43 +56,46 @@ async def generate_guide(request: GuideRequest):
             f"Only provide me the array; don't provide me any other information."
         )
 
-        # Groq API Endpoint and headers
+        # Gemini API Endpoint and headers
+        gemini_api_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
+        gemini_api_key = os.getenv("GEMINI_API_KEY")
 
-
-# Load .env.local file
-        load_dotenv(dotenv_path=".env.local")
-
-        groq_api_url = "https://api.groq.com/v1/chat/completions"
-        groq_api_key = os.getenv("GROQ_API_KEY")
-
-        if not groq_api_key:
-            raise HTTPException(status_code=500, detail="GROQ_API_KEY is not set")
-
+        if not gemini_api_key:
+            raise HTTPException(status_code=500, detail="GEMINI_API_KEY is not set")
 
         headers = {
-            "Authorization": f"Bearer {groq_api_key}",
             "Content-Type": "application/json",
         }
 
-        # Payload for Groq API
+        # Payload for Gemini API
         payload = {
-            "model": "mixtral-8x7b-32768",  # Adjust the model as needed
-            "messages": [{"role": "system", "content": prompt}],
+            "contents": [
+                {
+                    "parts": [
+                        {
+                            "text": prompt
+                        }
+                    ]
+                }
+            ]
         }
 
-        # Send request to Groq API
-        response = requests.post(groq_api_url, headers=headers, json=payload)
+        # Send request to Gemini API with API key as query parameter
+        response = requests.post(
+            f"{gemini_api_url}?key={gemini_api_key}",
+            headers=headers,
+            json=payload
+        )
 
         # Handle response
         if response.status_code != 200:
-            print(f"Error from Groq API: {response.text}")
-            raise HTTPException(status_code=500, detail="Error from Groq API")
+            raise HTTPException(status_code=response.status_code, detail=response.text)
 
         ai_response = response.json()
-        if "choices" not in ai_response or not ai_response["choices"]:
-            raise HTTPException(status_code=500, detail="Invalid response from Groq API")
+        if "candidates" not in ai_response or not ai_response["candidates"]:
+            raise HTTPException(status_code=500, detail="Invalid response from Gemini API")
 
-        generated_content = ai_response["choices"][0]["message"]["content"]
+        generated_content = ai_response["candidates"][0]["content"]["parts"][0]["text"]
 
         # Save revision data
         revision_store.set_revision(generated_content)
@@ -101,12 +106,11 @@ async def generate_guide(request: GuideRequest):
         }
 
     except requests.RequestException as e:
-        print(f"HTTP error while communicating with Groq API: {e}")
-        raise HTTPException(status_code=500, detail="Error communicating with Groq API")
+        print(f"HTTP error while communicating with Gemini API: {e}")
+        raise HTTPException(status_code=500, detail="Error communicating with Gemini API")
     except Exception as e:
         print(f"Error in /guide: {e}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
-
 
 @app.get("/getGuide")
 async def get_guide():
@@ -119,7 +123,6 @@ async def get_guide():
     except Exception as e:
         print(f"Error in /getGuide: {e}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
-
 
 @app.get("/")
 def root():
