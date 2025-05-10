@@ -39,7 +39,7 @@ const Footer = ({darkMode=true}) => {
         </div>
       </div>
       <div className="text-gray-600 text-lg">
-        &#169; CereBix 2025. All rights reserved.
+        &#169; CereBrix 2025. All rights reserved.
       </div>
     </div>
   );

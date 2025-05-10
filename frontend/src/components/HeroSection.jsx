@@ -36,7 +36,7 @@ const HeroSection = () => {
               </Link>
               <a href="https://eraser-io-henna.vercel.app/">
                 <button className="bg-yellow-300 hover:bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full flex items-center shadow-md transform hover:scale-105 transition-transform duration-300">
-                  <span>NOTEPAD</span>
+                  <span>STUDYPAD</span>
                   <MdKeyboardDoubleArrowRight className="text-2xl" />
                 </button>
               </a>
