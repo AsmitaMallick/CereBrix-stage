@@ -45,15 +45,21 @@ async def generate_guide(request: GuideRequest):
     try:
         # Construct prompt
         prompt = (
-            f"Generate an array of guide sentences like formulas or ideas for the "
-            f"{request.subject} subject for {request.qualification}. "
+            f"Generate a detailed and comprehensive array of revision notes for the {request.subject} subject, "
+            f"tailored for {request.qualification}. Each note should focus on key concepts, important formulas, "
+            f"and practical tips for understanding or memorization. "
         )
         if request.additional_context:
-            prompt += f"Additional context: {request.additional_context}. "
+            prompt += f"Consider the following additional context: {request.additional_context}. "
 
         prompt += (
-            f"Give it to me in the form of an array of points, and it must contain 5-8 points. "
-            f"Only provide me the array; don't provide me any other information."
+            f"Provide at least 20-25 points in the form of a single line, separated by semicolons (;)."
+            f"Each point should include: "
+            f"1) A brief explanation of the concept or formula, "
+            f"2) The formula itself (if applicable), "
+            f"3) Practical examples or applications (if relevant), and "
+            f"4) Tips or tricks to remember or apply it effectively. "
+            f"Do not include any extra information outside the single line."
         )
 
         # Gemini API Endpoint and headers
