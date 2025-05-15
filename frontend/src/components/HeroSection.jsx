@@ -17,8 +17,8 @@ const HeroSection = () => {
           </h1>
       
           {/* Glassmorphic Card */}
-          <div className="backdrop-blur-md bg-white/10 border left-60 border-white/20 rounded-3xl p-8 shadow-xl transition-all hover:scale-[1.02] duration-300">
-            <h1 className="text-4xl md:text-6xl font-extrabold  text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 drop-shadow-md tracking-tight">
+          <div className="backdrop-blur-md bg-white/10 border left-20 border-white/20 rounded-3xl p-8 shadow-xl transition-all hover:scale-[1.02] duration-300">
+            <h1 className="text-4xl md:text-6xl font-extrabold left-20  text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 drop-shadow-md tracking-tight">
               Reinventing Learning
             </h1>
       
@@ -49,7 +49,7 @@ const HeroSection = () => {
         <div className="col-span-3 flex justify-end items-center relative overflow-hidden rounded-lg" style={{
           background: 'radial-gradient(circle, rgba(0,85,184,1) 0%, rgba(0,0,0,1) 70%)'
         }}>
-          <div className="absolute top-0 left-20 w-12 h-12 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 opacity-30 rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute top-0 left-40 w-12 h-12 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 opacity-30 rounded-full blur-2xl animate-pulse"></div>
           <div className="absolute bottom-0 right-0 w-12 h-12 bg-gradient-to-r from-pink-400 via-purple-600 to-blue-600 opacity-30 rounded-full blur-2xl animate-pulse"></div>
       
           <div className="relative left-40 z-10 p-4">
