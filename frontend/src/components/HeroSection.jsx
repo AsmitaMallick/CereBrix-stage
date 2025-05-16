@@ -35,7 +35,7 @@ const HeroSection = () => {
                 </button>
                 </a>
               
-              <a href="https://flowchart.fun/">
+              <a href="https://flowchart-gpt-metachool.vercel.app/new">
                 <button className="bg-yellow-300 hover:bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full flex items-center shadow-md transform hover:scale-105 transition-transform duration-300">
                   <span>FLOWCHART</span>
                   <MdKeyboardDoubleArrowRight className="text-2xl" />
