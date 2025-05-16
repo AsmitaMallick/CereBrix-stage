@@ -72,10 +72,10 @@ const Footer = ({ darkMode = true }) => {
               Quine
             </a>
             <a
-              href="https://www.copilotkit.ai/"
+              href="https://flowchart.fun/"
               className="hover:text-white hover:cursor-pointer"
             >
-              CopilotKit
+              Flowchart
             </a>
           </div>
         </div>
