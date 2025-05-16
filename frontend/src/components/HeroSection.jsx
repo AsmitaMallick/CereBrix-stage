@@ -28,13 +28,18 @@ const HeroSection = () => {
       
             {/* Buttons */}
             <div className="flex flex-wrap gap-4 mt-8">
-              <a href="https://www.chatbase.co/chatbot-iframe/oCNAtJq9i9tYmUIQat3m6">
+              <a href="https://ai-sdk-preview-pdf-support.vercel.app/">
                 <button className="bg-gradient-to-r from-blue-500 to-purple-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-2xl hover:scale-110 transform transition-all duration-300 flex items-center space-x-2">
                   <span>Get Started</span>
                   <MdKeyboardDoubleArrowRight className="text-2xl" />
                 </button>
                 </a>
-              
+              <a href="https://www.chatbase.co/chatbot-iframe/oCNAtJq9i9tYmUIQat3m6">
+                <button className="bg-gradient-to-r from-blue-500 to-purple-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-2xl hover:scale-110 transform transition-all duration-300 flex items-center space-x-2">
+                  <span>AI Buddy</span>
+                  <MdKeyboardDoubleArrowRight className="text-2xl" />
+                </button>
+                </a>
               <a href="https://flowchart-gpt-metachool.vercel.app/new">
                 <button className="bg-yellow-300 hover:bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full flex items-center shadow-md transform hover:scale-105 transition-transform duration-300">
                   <span>FLOWCHART</span>
