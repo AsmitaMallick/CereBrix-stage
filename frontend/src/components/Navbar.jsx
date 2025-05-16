@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub } from "react-icons/fa";
+import { SiGooglechrome } from "react-icons/si";
 
 const Navbar = () => {
     return (
@@ -29,6 +30,12 @@ const Navbar = () => {
                             <a href="https://github.com/AsmitaMallick/study-guide.git" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition flex items-center gap-1">
                                 <FaGithub className="text-xl" />
                                 <span className="hidden lg:inline">GitHub</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://chromewebstore.google.com/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk?hl=en-GB&utm_source=ext_sidebar" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition flex items-center gap-1">
+                                <SiGooglechrome className="text-xl text-blue-500" />
+                                <span className="hidden lg:inline">Extension</span>
                             </a>
                         </li>
                     </ul>
