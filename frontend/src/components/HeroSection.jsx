@@ -17,8 +17,8 @@ const HeroSection = () => {
           </h1>
       
           {/* Glassmorphic Card */}
-          <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-3xl p-8 shadow-xl transition-all hover:scale-[1.02] duration-300">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 drop-shadow-md tracking-tight">
+          <div className="backdrop-blur-md bg-white/10 border left-20 border-white/20 rounded-3xl p-8 shadow-xl transition-all hover:scale-[1.02] duration-300">
+            <h1 className="text-4xl md:text-6xl font-extrabold left-20  text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 drop-shadow-md tracking-tight">
               Reinventing Learning
             </h1>
       
@@ -28,13 +28,14 @@ const HeroSection = () => {
       
             {/* Buttons */}
             <div className="flex flex-wrap gap-4 mt-8">
-              <Link to="/mcq">
+              <a href="https://ai-sdk-preview-pdf-support.vercel.app/">
                 <button className="bg-gradient-to-r from-blue-500 to-purple-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-2xl hover:scale-110 transform transition-all duration-300 flex items-center space-x-2">
                   <span>Get Started</span>
                   <MdKeyboardDoubleArrowRight className="text-2xl" />
                 </button>
-              </Link>
-              <a href="https://flowchart.fun/">
+                </a>
+              
+              <a href="https://flowchart-gpt-metachool.vercel.app/new">
                 <button className="bg-yellow-300 hover:bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full flex items-center shadow-md transform hover:scale-105 transition-transform duration-300">
                   <span>FLOWCHART</span>
                   <MdKeyboardDoubleArrowRight className="text-2xl" />
@@ -48,14 +49,14 @@ const HeroSection = () => {
         <div className="col-span-3 flex justify-end items-center relative overflow-hidden rounded-lg" style={{
           background: 'radial-gradient(circle, rgba(0,85,184,1) 0%, rgba(0,0,0,1) 70%)'
         }}>
-          <div className="absolute top-0 left-0 w-24 h-24 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 opacity-30 rounded-full blur-2xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-r from-pink-400 via-purple-600 to-blue-600 opacity-30 rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute top-0 left-40 w-12 h-12 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 opacity-30 rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-0 w-12 h-12 bg-gradient-to-r from-pink-400 via-purple-600 to-blue-600 opacity-30 rounded-full blur-2xl animate-pulse"></div>
       
-          <div className="relative z-10 p-4">
+          <div className="relative left-40 z-10 p-4">
             <img
               src={heroImage}
               alt="Hero"
-              className="w-[80%] h-auto rounded-xl shadow-2xl hover:scale-105 transition-transform duration-500 ease-in-out"
+              className="w-[60%] h-auto  rounded-xl shadow-2xl hover:scale-105 transition-transform duration-200 ease-in-out"
             />
           </div>
         </div>

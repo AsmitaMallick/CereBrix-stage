@@ -9,7 +9,7 @@ const FeaturesSection = () => {
       id: 1,
       title: 'Tailored Study Materials 📚',
       description:
-        'Create personalized resources that adapt to your learning style and needs. Save time and focus on what truly matters.',
+        'Crafted just for you. Smartly generated resources tailored to your style, goals, and syllabus.',
       icon: <FaBookOpen size={40} className="text-blue-400" />,
       content: <Feature1 />,
     },
@@ -17,7 +17,7 @@ const FeaturesSection = () => {
       id: 2,
       title: 'Interactive MCQ Practice 📝',
       description:
-        'Test your knowledge with dynamic MCQs and get instant feedback. Explore hints and solutions tailored to your learning pace.',
+        'Practice smarter with hints, feedback, and explanations — all in real-time. Boost retention effortlessly.',
       icon: <FaLightbulb size={40} className="text-yellow-400" />,
       content: <Feature2 />,
     },
@@ -25,7 +25,7 @@ const FeaturesSection = () => {
       id: 3,
       title: 'Detailed Insights & Explanations 💡',
       description:
-        'Unlock deeper understanding with step-by-step insights. Learn the "why" behind every answer to strengthen your skills.',
+        'Don’t just memorize — deeply understand. Know the "why" behind every concept and answer.',
       icon: <FaBrain size={40} className="text-purple-400" />,
       content: <Feature3 />,
     },
@@ -33,41 +33,41 @@ const FeaturesSection = () => {
       id: 4,
       title: 'GuideMap Generator 🗺️',
       description:
-        'Visualize concepts with flowcharts that make complex topics easier to understand and follow.',
+        'Turn concepts into clear visual flows. Flowcharts for easier thinking and better retention.',
       icon: <FaProjectDiagram size={40} className="text-green-400" />,
       content: <Feature4 />,
     },
   ];
 
   return (
-    <div className="bg-gradient-to-b from-gray-900 via-black to-gray-800 text-white py-20 px-8 md:px-20">
+    <div className="bg-gradient-to-b from-gray-950 via-black to-gray-900 text-white py-20 px-6 md:px-20">
       <h1 className="text-center text-5xl font-bold tracking-wider mb-16">
-        STUDY WITH <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-500">COPILOT</span>
+        STUDY WITH <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-500">CEREBRIX</span>
       </h1>
-      <div className="grid md:grid-cols-2 gap-12">
-        {/* Feature Selection Section */}
+      <div className="grid md:grid-cols-2 gap-14">
+        {/* Feature List */}
         <div className="flex flex-col gap-8">
           {featureData.map((feature) => (
             <div
               key={feature.id}
               onClick={() => setSelected(feature.id)}
-              className={`flex items-center gap-6 p-6 border rounded-lg transition-all duration-300 cursor-pointer ${
+              className={`flex items-start gap-6 p-6 border rounded-2xl transition-all duration-300 cursor-pointer hover:scale-105 ${
                 selected === feature.id
-                  ? 'bg-blue-900 border-blue-400 shadow-lg shadow-blue-400/50 transform scale-105'
-                  : 'border-gray-700 hover:bg-gray-800 hover:scale-105'
+                  ? 'bg-blue-900/80 border-blue-400 shadow-xl shadow-blue-500/40'
+                  : 'border-gray-700 hover:bg-gray-800'
               }`}
             >
-              {feature.icon}
+              <div className="mt-1">{feature.icon}</div>
               <div>
                 <h2 className="text-2xl font-semibold">{feature.title}</h2>
-                <p className="text-gray-400 text-lg">{feature.description}</p>
+                <p className="text-gray-400 text-lg mt-1">{feature.description}</p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Feature Content Section */}
-        <div className="p-6 bg-gray-900 rounded-lg shadow-lg shadow-gray-800/50">
+        {/* Feature Content */}
+        <div className="p-8 bg-black/60 rounded-2xl shadow-lg shadow-black/40 border border-gray-700">
           {featureData.find((feature) => feature.id === selected)?.content}
         </div>
       </div>
@@ -77,63 +77,52 @@ const FeaturesSection = () => {
 
 const Feature1 = () => (
   <div className="space-y-5">
-    <h3 className="text-3xl flex items-center font-bold text-blue-400">Tailored Study Materials</h3>
-    <ul className="space-y-5 text-xl leading-relaxed text-gray-300">
-      <li>
-        🎯 Choose your subjects and qualifications to generate personalized study materials.
-      </li>
-      <li>
-        ✨ From concise summaries to targeted practice questions, everything is crafted for your success.
-      </li>
-      <li>🚀 Study smarter, not harder, with curated resources at your fingertips.</li>
+    <h3 className="text-5xl font-bold space-y-9 text-blue-400">Tailored Study Materials</h3>
+    <ul className="list-disc pl-6 space-y-7 text-2xl text-gray-300">
+      <li>🎯 Choose subjects, levels, and preferred learning styles.</li>
+      <li>✨ Generate smart summaries, key points, and cheat sheets instantly.</li>
+      <li>📘 Get notes, practice sets, and references all in one click.</li>
+      <li>📈 Track what you’ve learned and what’s pending for each topic.</li>
+      <li>🚀 Built to help you master concepts without the clutter.</li>
     </ul>
   </div>
 );
 
 const Feature2 = () => (
-  <div className="space-y-4">
-    <h3 className="text-3xl font-bold text-yellow-400">Interactive MCQ Practice</h3>
-    <ul className="space-y-5 text-xl leading-relaxed text-gray-300">
-      <li>📊 Test your skills with engaging multiple-choice questions.</li>
-      <li>
-        💡 Stuck? Get personalized hints and explanations powered by AI to enhance understanding.
-      </li>
-      <li>
-        🎉 Make learning fun with real-time feedback and insights for continuous improvement.
-      </li>
+  <div className="space-y-5">
+    <h3 className="text-5xl font-bold space-y-9 text-yellow-400">Interactive MCQ Practice</h3>
+    <ul className="list-disc pl-6 space-y-7 text-2xl text-gray-300">
+      <li>📊 Practice with questions based on your selected topics.</li>
+      <li>💡 Access hints and explanations for every question.</li>
+      <li>🔁 Retry incorrect answers with adjusted difficulty.</li>
+      <li>⚡ Instant feedback to learn as you go — not after.</li>
+      <li>🎯 Boost your confidence with performance analytics.</li>
     </ul>
   </div>
 );
 
 const Feature3 = () => (
-  <div className="space-y-4">
-    <h3 className="text-3xl font-bold text-purple-400">Detailed Insights & Explanations</h3>
-    <ul className="space-y-5 text-xl leading-relaxed text-gray-300">
-      <li>
-        🧠 Gain in-depth knowledge by understanding the reasoning behind every answer.
-      </li>
-      <li>
-        🔍 Strengthen your concepts with detailed, step-by-step explanations for tricky topics.
-      </li>
-      <li>
-        📖 Build a solid foundation that ensures long-term academic success and confidence.
-      </li>
+  <div className="space-y-5">
+    <h3 className="text-5xl font-bold space-y-9 text-purple-400">Detailed Insights & Explanations</h3>
+    <ul className="list-disc pl-6 space-y-7 text-2xl text-gray-300">
+      <li>🧠 Learn why an answer is right — or wrong — in depth.</li>
+      <li>🔍 Step-by-step solutions explained with clarity.</li>
+      <li>📚 Strengthen weak areas through guided explanations.</li>
+      <li>🎓 Developed by AI but aligned with academic rigor.</li>
+      <li>🌟 Improve long-term retention by learning the logic.</li>
     </ul>
   </div>
 );
 
 const Feature4 = () => (
-  <div className="space-y-4">
-    <h3 className="text-3xl font-bold text-green-400">GuideMap Generator</h3>
-    <ul className="space-y-5 text-xl leading-relaxed text-gray-300">
-      <li>🗺️ Input your desired topic and receive a beautifully crafted flowchart.</li>
-      <li>
-        💡 Simplify complex concepts and understand their connections visually.
-      </li>
-      <li>
-        🌟 Perfect for students and educators who love structured, step-by-step breakdowns.
-      </li>
-      <li>🚀 Make learning more intuitive and fun with powerful visual aids.</li>
+  <div className="space-y-5">
+    <h3 className="text-5xl font-bold space-y-9 text-green-400">GuideMap Generator</h3>
+    <ul className="list-disc pl-6 space-y-7 text-2xl text-gray-300 leading-relaxed">
+      <li>🗺️ Convert any topic into a visual, node-based flowchart.</li>
+      <li>💡 Great for understanding chains, hierarchies, or timelines.</li>
+      <li>🧩 Break down difficult concepts into digestible pieces.</li>
+      <li>🎥 Export and share your maps for collaborative learning.</li>
+      <li>🚀 Ideal for visual learners and revision sessions alike.</li>
     </ul>
   </div>
 );
