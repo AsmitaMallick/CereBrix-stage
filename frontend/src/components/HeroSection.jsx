@@ -28,7 +28,7 @@ const HeroSection = () => {
       
             {/* Buttons */}
             <div className="flex flex-wrap gap-4 mt-8">
-              <a href="https://ai-sdk-preview-pdf-support.vercel.app/">
+              <a href="https://www.chatbase.co/chatbot-iframe/oCNAtJq9i9tYmUIQat3m6">
                 <button className="bg-gradient-to-r from-blue-500 to-purple-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-2xl hover:scale-110 transform transition-all duration-300 flex items-center space-x-2">
                   <span>Get Started</span>
                   <MdKeyboardDoubleArrowRight className="text-2xl" />
