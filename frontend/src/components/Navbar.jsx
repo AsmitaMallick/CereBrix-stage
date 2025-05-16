@@ -20,13 +20,13 @@ const Navbar = () => {
                 <div className="flex gap-8 items-center">
                     <ul className="hidden md:flex gap-6 text-lg font-semibold text-white">
                         <li>
-                            <Link to="/mcq" className="hover:text-yellow-300 transition">Practice</Link>
+                            <a href="https://ai-sdk-preview-pdf-support.vercel.app/" className="hover:text-yellow-300 transition">Practice</a>
                         </li>
                         <li>
                             <Link to="/home" className="hover:text-yellow-300 transition">Guide</Link>
                         </li>
                         <li>
-                            <a href="https://github.com/rajesh-adk-137/StudyPal" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition flex items-center gap-1">
+                            <a href="https://github.com/AsmitaMallick/study-guide.git" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition flex items-center gap-1">
                                 <FaGithub className="text-xl" />
                                 <span className="hidden lg:inline">GitHub</span>
                             </a>
